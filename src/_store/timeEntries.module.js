@@ -3,7 +3,7 @@ import { router } from "../_helpers";
 
 const user = JSON.parse(localStorage.getItem("user"));
 const state = user
-  ? { status: { loggedIn: true }, user, timeEntries }
+  ? { status: { loggedIn: true }, user }
   : { status: {}, user: null };
 
 const actions = {
@@ -24,7 +24,7 @@ const actions = {
 
 const mutations = {
   timeEntrySuccess(state, timeEntry) {
-    state = { currentTimeEntry: timeEntry };
+    state.currentTimeEntry = timeEntry;
   }
 };
 
