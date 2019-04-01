@@ -1,18 +1,13 @@
 import { timeEntriesService } from "../_services";
 import { router } from "../_helpers";
 
-const state = {
-  all: {}
-};
-
 const user = JSON.parse(localStorage.getItem("user"));
-const userStatus = user
-  ? { status: { loggedIn: true }, user }
+const state = user
+  ? { status: { loggedIn: true }, user, timeEntries }
   : { status: {}, user: null };
 
 const actions = {
   saveTimeEntry({ dispatch, commit }, timeEntry) {
-    var toSend = { timeEntry, user };
     timeEntriesService.addTimeEntry(timeEntry).then(
       timeEntry => {
         commit("timeEntrySuccess", timeEntry);
@@ -27,8 +22,15 @@ const actions = {
   }
 };
 
+const mutations = {
+  timeEntrySuccess(state, timeEntry) {
+    state = { currentTimeEntry: timeEntry };
+  }
+};
+
 export const timeEntries = {
   namespaced: true,
   state,
-  actions
+  actions,
+  mutations
 };

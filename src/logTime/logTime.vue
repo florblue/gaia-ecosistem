@@ -27,11 +27,11 @@
 <script>
 import { mapState, mapActions } from "vuex";
 //import store from "../store";
-
 export default {
   data() {
     return {
-      timeEntry: {}
+      timeEntry: {},
+      user: JSON.parse(localStorage.getItem("user"))
     };
   },
   methods: {
@@ -40,10 +40,12 @@ export default {
       /*if (Object.keys(timeEntry).length > 1) {
         store.commit("timeUpdate", timeEntry);
       } */
+
       this.saveTimeEntry({
         date: this.timeEntry.date,
         totalTime: this.timeEntry.totalTime,
-        comment: this.timeEntry.comment
+        comment: this.timeEntry.comment,
+        user: this.user.user
       });
       /* this.$store.dispatch("saveTimeEntry", {
         date: this.timeEntry.date,
@@ -51,6 +53,12 @@ export default {
         comment: this.timeEntry.comment
       }); */
     }
+  },
+  computed: {
+    ...mapState({
+      account: state => state.account,
+      users: state => state.users.all
+    })
   }
 };
 </script>

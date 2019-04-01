@@ -11,7 +11,7 @@ function addTimeEntry(timeEntry) {
     body: JSON.stringify(timeEntry)
   };
   console.log(timeEntry);
-  return fetch(`${config.apiUrl}/timeEntries`, requestOptions).then(
+  return fetch(`${config.apiUrl}/time-entries`, requestOptions).then(
     handleResponse
   );
 }

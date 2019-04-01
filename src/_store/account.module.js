@@ -13,7 +13,7 @@ const actions = {
     userService.login(username, password).then(
       user => {
         commit("loginSuccess", user);
-        console.log("holi");
+        console.log("You are login now!");
         router.push("/");
       },
       error => {
@@ -53,7 +53,7 @@ const mutations = {
   },
   loginSuccess(state, user) {
     state.status = { loggedIn: true };
-    state.user = user;
+    state.user = user; //tokenyid
   },
   loginFailure(state) {
     state.status = {};
