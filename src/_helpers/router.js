@@ -4,7 +4,8 @@ import Router from "vue-router";
 import HomePage from "../home/HomePage";
 import LoginPage from "../login/LoginPage";
 import RegisterPage from "../register/RegisterPage";
-import logTime from "../logTime/logTime";
+import TimeEntries from "../logTime/TimeEntries";
+import LogTime from "../logTime/LogTime";
 
 Vue.use(Router);
 
@@ -14,13 +15,19 @@ export const router = new Router({
     { path: "/", component: HomePage },
     { path: "/login", component: LoginPage },
     { path: "/register", component: RegisterPage },
+    {
+      path: "/time-entries",
+      component: TimeEntries,
+      children: [
+        {
+          path: "log-time",
+          component: LogTime
+        }
+      ]
+    },
 
     // otherwise redirect to home
-    { path: "*", redirect: "/" },
-    {
-      path: "/log-time",
-      component: logTime
-    }
+    { path: "*", redirect: "/" }
   ]
 });
 

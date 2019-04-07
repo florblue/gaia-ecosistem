@@ -1,0 +1,2 @@
+- Un usuario se registra (manda mail y passs)
+-- si esta todo ok se guarda lo recibido (id y token) en localstorage
