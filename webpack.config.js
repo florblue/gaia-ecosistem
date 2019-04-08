@@ -26,7 +26,6 @@ module.exports = {
     })
   ],
   devServer: {
-    'Access-Control-Allow-Origin': '*',
     historyApiFallback: true
   },
   externals: {
