@@ -31,7 +31,9 @@ module.exports = {
   externals: {
     // global app config object
     config: JSON.stringify({
-      apiUrl: "http://192.168.1.10:3030"
+      apiUrl: "https://desolate-chamber-87707.herokuapp.com"
+      // apiUrl: "http://192.168.0.15:3030"
+      // apiUrl: "http://192.168.1.10:3030"
     })
   }
 };
