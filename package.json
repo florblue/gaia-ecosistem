@@ -7,8 +7,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --disable-host-check",
-    "heroku-prebuild": "npm install --dev"
+    "start": "webpack-dev-server --port $PORT --host 0.0.0.0 --disable-host-check",
+    "heroku-prebuild": "npm install --dev",
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "vee-validate": "^2.1.0-beta.6",
