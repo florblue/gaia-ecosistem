@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --port $PORT --host localhost --disable-host-check"
+    "start": "webpack-dev-server --port $PORT --https --host 127.0.0.1 --disable-host-check"
   },
   "dependencies": {
     "vee-validate": "^2.1.0-beta.6",
