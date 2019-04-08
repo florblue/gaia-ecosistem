@@ -17,3 +17,5 @@ new Vue({
     store,
     render: h => h(App)
 });
+
+// "start": "webpack-dev-server --open"
