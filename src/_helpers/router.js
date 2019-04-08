@@ -6,13 +6,14 @@ import LoginPage from "../login/LoginPage";
 import RegisterPage from "../register/RegisterPage";
 import TimeEntries from "../logTime/TimeEntries";
 import LogTime from "../logTime/LogTime";
+import App from "../app/App"
 
 Vue.use(Router);
 
 export const router = new Router({
   mode: "history",
   routes: [
-    { path: "/", component: HomePage },
+    { path: "/", component: App },
     { path: "/login", component: LoginPage },
     { path: "/register", component: RegisterPage },
     {
@@ -27,7 +28,7 @@ export const router = new Router({
     },
 
     // otherwise redirect to home
-    { path: "*", redirect: "/" }
+    { path: "*", redirect: "/login" }
   ]
 });
 

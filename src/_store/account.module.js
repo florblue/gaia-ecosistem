@@ -1,20 +1,21 @@
 import { userService } from "../_services";
 import { router } from "../_helpers";
 
-const user = JSON.parse(localStorage.getItem("user"));
+// const user = JSON.parse(localStorage.getItem("user"));
+const user = null
 const state = user
   ? { status: { loggedIn: true }, user }
   : { status: {}, user: null };
 
 const actions = {
   login({ dispatch, commit }, { username, password }) {
-    commit("loginRequest", { username });
+    // commit("loginRequest", { username });
 
     userService.login(username, password).then(
       user => {
         commit("loginSuccess", user);
-        console.log("You are login now!");
-        router.push("/");
+        console.log("You are login now!", user);
+        router.push("/time-entries");
       },
       error => {
         commit("loginFailure", error);
@@ -33,10 +34,10 @@ const actions = {
       user => {
         commit("registerSuccess", user);
         router.push("/login");
-        setTimeout(() => {
-          // display success message after route change completes
-          dispatch("alert/success", "Registration successful", { root: true });
-        });
+        // setTimeout(() => {
+        //   // display success message after route change completes
+        //   dispatch("alert/success", "Registration successful", { root: true });
+        // });
       },
       error => {
         commit("registerFailure", error);
@@ -49,7 +50,8 @@ const actions = {
 const mutations = {
   loginRequest(state, user) {
     state.status = { loggingIn: true };
-    state.user = user;
+    // state.user = user;
+    console.log('store usser :', user)
   },
   loginSuccess(state, user) {
     state.status = { loggedIn: true };

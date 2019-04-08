@@ -15,20 +15,32 @@
     <router-view></router-view>
 
     <div class="time-entries">
-      <p v-if="!timeEntries.length">
+      <p v-if="!timeEntries">
         <strong>No time entries yet</strong>
       </p>
 
       <div class="list-group">
         <a class="list-group-item" v-for="timeEntry in timeEntries" :key="timeEntry._id">
           <div class="row">
+            <div class="col-sm-2 user-details">
+              <!-- <img :src="timeEntry.user.image" class="avatar img-circle img-responsive" /> -->
+              <img src="https://1.gravatar.com/avatar/7f4ec37467f2f7db6fffc7b4d2cc8dc2?s=250&d=retro&r=g" class="avatar img-circle img-responsive" />
+              
+              <p class="text-center">
+                <strong>
+                  {{ timeEntry.user.firstName }} 
+                  {{ timeEntry.user.lastName }}
+                </strong>
+              </p>
+            </div>
+
             <div class="col-sm-2 text-center time-block">
               <h3 class="list-group-item-text total-time">
-                <i class="glyphicon glyphicon-time"></i>
+                <i class="glyphicon glyphicon-time"></i> 
                 {{ timeEntry.totalTime }}
               </h3>
               <p class="label label-primary text-center">
-                <i class="glyphicon glyphicon-calendar"></i>
+                <i class="glyphicon glyphicon-calendar"></i> 
                 {{ timeEntry.date }}
               </p>
             </div>
@@ -64,8 +76,17 @@ export default {
   },
   methods: {
     ...mapActions("timeEntries", {
-      getUserTimeEntries: "getUserTimeEntries"
-    })
+      getUserTimeEntries: "getUserTimeEntries",
+      deleteUserTimeEntry: "deleteUserTimeEntry"
+
+    }),
+     deleteTimeEntry (timeEntry) {
+        if (window.confirm('Are you sure you want to delete this time entry?')) {
+          // store.commit('deleteTime', timeEntry);
+          console.log('time entry id antes de bbdd', timeEntry)
+          this.deleteUserTimeEntry(timeEntry)
+        }
+      }
   }
 };
 </script>

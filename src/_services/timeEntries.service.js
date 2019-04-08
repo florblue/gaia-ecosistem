@@ -5,7 +5,7 @@ export const timeEntriesService = {
   getUserTimeEntries,
   getById,
   update,
-  delete: _delete
+  deleteTimeEntry
 };
 
 function addTimeEntry(timeEntry) {
@@ -58,13 +58,13 @@ function update(timeEntry) {
   ).then(handleResponse);
 }
 
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
+function deleteTimeEntry(timeEntry) {
   const requestOptions = {
     method: "DELETE"
   };
+  console.log('time2')
 
-  return fetch(`${config.apiUrl}/timeEntries/${id}`, requestOptions).then(
+  return fetch(`${config.apiUrl}/time-entries/${timeEntry._id}`, requestOptions).then(
     handleResponse
   );
 }

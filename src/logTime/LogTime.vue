@@ -3,17 +3,17 @@
     <div class="form-group">
       <div class="col-sm-6">
         <label>Date</label>
-        <input type="date" class="form-control" v-model="timeEntry.date" placeholder="Date">
+        <input type="date" class="form-control" v-model="currentTimeEntry.date" placeholder="Date">
       </div>
       <div class="col-sm-6">
         <label>Hours</label>
-        <input type="number" class="form-control" v-model="timeEntry.totalTime" placeholder="Hours">
+        <input type="number" class="form-control" v-model="currentTimeEntry.totalTime" placeholder="Hours">
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-12">
         <label>Comment</label>
-        <input type="text" class="form-control" v-model="timeEntry.comment" placeholder="Comment">
+        <input type="text" class="form-control" v-model="currentTimeEntry.comment" placeholder="Comment">
       </div>
     </div>
     <button class="btn btn-primary" v-on:click="save()">Save</button>
@@ -30,21 +30,22 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      timeEntry: {}
+      currentTimeEntry: {}
     };
   },
   methods: {
     ...mapActions("timeEntries", ["saveTimeEntry"]),
     save() {
       this.saveTimeEntry({
-        date: this.timeEntry.date,
-        totalTime: this.timeEntry.totalTime,
-        comment: this.timeEntry.comment
+        date: this.currentTimeEntry.date,
+        totalTime: this.currentTimeEntry.totalTime,
+        comment: this.currentTimeEntry.comment
       });
+      this.currentTimeEntry = {};
     }
   },
   computed: {
-    ...mapState({})
+    ...mapState('timeEntries', ['currentTimeEntry'])
   }
 };
 </script>
