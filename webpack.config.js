@@ -29,7 +29,8 @@ module.exports = {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
-    historyApiFallback: true
+    historyApiFallback: true,
+    https: true,
   },
   externals: {
     // global app config object
