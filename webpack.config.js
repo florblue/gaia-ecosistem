@@ -26,11 +26,8 @@ module.exports = {
     })
   ],
   devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-    historyApiFallback: true,
-    https: false,
+    headers:          { 'Access-Control-Allow-Origin': '*' },
+    https:            false,
     disableHostCheck: true
   },
   externals: {
