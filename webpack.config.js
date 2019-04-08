@@ -30,7 +30,8 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
     historyApiFallback: true,
-    https: true,
+    https: false,
+    disableHostCheck: true
   },
   externals: {
     // global app config object
