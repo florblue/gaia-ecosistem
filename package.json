@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --port $PORT --host 0.0.0.0 --disable-host-check",
+    "start": "webpack-dev-server --port $PORT",
     "heroku-prebuild": "npm install --dev"
   },
   "dependencies": {
